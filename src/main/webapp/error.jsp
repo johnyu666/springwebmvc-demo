@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
+    pageEncoding="UTF-8" isELIgnored="false" isErrorPage="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +8,13 @@
 </head>
 <body>
 <h1>Success!!!</h1>
-<h2>req:${requestScope.c.cname}</h2>
-<h2>session:${sessionScope.c.cname}</h2>
-<%System.out.println("render....."); %>
+<%
+	if(exception instanceof ArithmeticException){
+		out.write("数学异常");
+	}
+	else{
+		out.write("其它异常");
+	}
+%>
 </body>
 </html>
